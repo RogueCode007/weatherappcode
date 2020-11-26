@@ -41,6 +41,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    //Get the keyword's coordinates and dipactch an action to get the weather data of the coordinates
     async fetchLocation({
       dispatch
     }, data) {
@@ -57,10 +58,11 @@ export default new Vuex.Store({
         
         dispatch('fetchCity', city)
       } catch (err) {
-        console.log(err)
-          //router.push('/error')
+        console.log(err) 
       }
     },
+
+    //Action to get the weather data of coordinates
     async fetchCity({
       commit
     }, data) {
@@ -78,12 +80,13 @@ export default new Vuex.Store({
         commit('getDate')
       } catch (err) {
         console.log(err)
-        //router.push('/error')
         
       }finally{
         commit('changeLoading')
       }
     },
+
+    //Action dispatched beforeCreate to get user's location
     async getLocation({dispatch}){
       if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition((pos)=>{
@@ -92,15 +95,19 @@ export default new Vuex.Store({
           data.lon = pos.coords.longitude
           dispatch("fetchCity", data)
         }, (err)=>{
-          alert(`Error(${err.code}): ${err.message}`)
-          dispatch("default")
+          //if user rejects location permission, dispatch an action that uses a default location
+          alert(`I'm going to proceed with a default location anyway`);
+          console.log(err);
+          dispatch("default");
         })
       }else{
+        //if browser doesn't support geolocation
         alert("this browser does not support geolocation, ditch it!")
         dispatch("default")
       }
       
     },
+    //default action (uses Lagos as the location)
     async default ({
       commit
     }) {
@@ -120,6 +127,7 @@ export default new Vuex.Store({
         commit('changeLoading')
       }
     },
+    //Action to be fired when page is refreshed
     reload({dispatch}){
       dispatch("getLocation")
     }

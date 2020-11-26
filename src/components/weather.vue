@@ -99,15 +99,7 @@ button{
   border: 1px solid #6E707A;
   font-family: 'Raleway', sans-serif;
 }
-// .background-cloud{
-//   position: absolute;
-//   z-index: 100;
-//   opacity: 0.5;
-//   max-width: 700px;
-//   height: 200px;
-//   top: 70px;
-//   left:0
-// }
+
 .location_icon{
   background-color: #6E707A;
   padding: 6px;
@@ -152,7 +144,7 @@ button{
   color: #A09FB1
 }
 .date{
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -160,7 +152,8 @@ button{
   
 }
 .date p{
-  color: #A09FB1
+  color: #A09FB1;
+  
 }
 .location{
   color: #A09FB1;
@@ -169,7 +162,10 @@ button{
 .location_on{
   color: #A09FB1
 }
-@media only screen and (min-width: 1024px){
+p.location{
+  
+}
+@media only screen and (min-width: 800px){
   .content{
      min-height: 894px
   }
@@ -183,9 +179,19 @@ button{
   .description{
     margin: 80px 0
   }
+  div.date{
+    width: 100%;
+  }
   .location, .date{
     position: relative;
-    top: 160px
+    top: 450px
   }
 }
+@media only screen and (min-width: 1024px){
+    .location, .date{
+    position: relative;
+    top: 150px;
+  }
+}
+
 </style>

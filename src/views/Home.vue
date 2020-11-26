@@ -2,7 +2,7 @@
   <div>
     <div v-if="loading" class="loading">
       <div>
-        <p>Loading...</p>
+        <p>Loading your weather data...</p>
       </div>
     </div>
     <div v-else class="wrapper">
@@ -25,7 +25,7 @@
             :key="daily.id"
             class="card"
           >
-            <p class="date">{{ dates.future[index] }}</p>
+            <p class="card-date">{{ dates.future[index] }}</p>
             <img :src="daily.img" alt />
             <div>
               <p v-temp:[changeTemp]="tempMode" class="mornTemp">
@@ -211,6 +211,8 @@ export default {
   text-align: center;
   background: #1e213a;
   padding: 15px 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .card div {
@@ -218,10 +220,15 @@ export default {
   justify-content: space-around;
   margin-bottom: 10px;
 }
-.date {
+.card-date {
   margin: 10px auto;
   color: #e7e7eb;
   font-size: 0.8em;
+}
+p.card-date{
+  margin-bottom: 0;
+  font-size: 0.8em;
+  margin-top: 0;
 }
 .mornTemp {
   color: #e7e7eb;
@@ -238,12 +245,15 @@ h2 {
   color: #e7e7eb;
   width: 95%;
   margin: 10px auto;
+  
 }
 .highlights {
   text-align: center;
   background-color: #1e213a;
   padding: 20px;
   margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 h5 {
   font-size: 1.2em;
@@ -276,7 +286,7 @@ h4 {
   font-weight: 300;
   font-family: "Raleway", sans-serif;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 800px) {
   .wrapper {
     display: flex;
   }
@@ -294,7 +304,6 @@ h4 {
     visibility: visible;
     float: right;
     margin: 20px 40px 0 0;
-    border: 1px solid;
     width: 10%;
     justify-content: space-between;
   }
@@ -303,16 +312,20 @@ h4 {
     color: #e7e7eb;
     outline: none;
     border: 1px solid #585676;
+    border-radius: 50%;
+    padding: 5px 8px;
+    margin-right: 5px;
   }
   .future-cards {
     width: 95%;
   }
   .card {
-    width: 16%;
-    margin: 1.2%;
+    width: 30%;
+    margin: 3.33%;
   }
-  .date {
-    font-size: 0.7em;
+  p.card-date {
+    font-size: 0.65em;
+    
   }
   .highlights-one,
   .highlights-two {
@@ -330,6 +343,12 @@ h4 {
   }
   .white-box {
     margin-top: 35px;
+  }
+}
+@media only screen and (min-width: 1024px){
+  .card{
+    width: 16%;
+    margin: 1.2%
   }
 }
 </style>
